@@ -20,12 +20,12 @@ export const useStore = defineStore('main', {
   }),
   actions: {
     setupWallet() {
-      console.log('setting up', this.$nuxt.$config.apiKey)
       return new Promise((resolve) => {
         this.loading = true
         this.$nuxt.$walletService
           .walletProvider({ apiKey: this.$nuxt.$config.apiKey })
           .then(({ details, wallet, isConnected }) => {
+            console.log('error is', wallet)
             this.wallet = wallet
             this.isConnected = isConnected
             if (isConnected) {
@@ -33,6 +33,9 @@ export const useStore = defineStore('main', {
             }
             this.loading = false
             return resolve(wallet)
+          })
+          .catch((e) => {
+            console.log('error is', e)
           })
       })
     },

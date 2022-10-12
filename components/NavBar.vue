@@ -207,7 +207,10 @@ export default {
     }
   },
   mounted() {
-    if (!localStorage.getItem('theme')) {
+    if (
+      localStorage.getItem('theme') !== 'dark' &&
+      localStorage.getItem('theme') !== 'light'
+    ) {
       localStorage.setItem('theme', 'dark')
     }
     const themeSaved = localStorage.getItem('theme')
@@ -244,15 +247,4 @@ export default {
     },
   },
 }
-/*
-const { wallet, isConnected, details, loading, connect, disconnect } = await initWallet()
-store.details = details
-// store.wallet = wallet
-store.isConnected = isConnected
-let on = this.$colorMode.preference === "dark"
-
-const toggleMode = () => {
-  on = !on;
-  colorMode.preference = on ? 'dark' : 'light'
-} */
 </script>

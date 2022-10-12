@@ -70,23 +70,23 @@
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
   margin-top: 60px;
-  .collection {
-    h3 {
-      font-size: 1.1rem;
-      font-weight: bold;
+}
+.collection {
+  h3 {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+  .pic-slider {
+    cursor: pointer;
+    height: unset;
+
+    & > div {
+      padding-left: 15px;
     }
-    .pic-slider {
-      cursor: pointer;
-      height: unset;
 
-      & > div {
-        padding-left: 15px;
-      }
-
-      img {
-        object-fit: cover;
-        height: 180px;
-      }
+    img {
+      object-fit: cover;
+      height: 180px;
     }
   }
 }

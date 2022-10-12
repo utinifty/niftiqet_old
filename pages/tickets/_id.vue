@@ -277,11 +277,22 @@
           </div>
         </div>
       </section>
-      <section class="more--events">
-        <div class="cto--container container px-4 my-12">
+      <section class="more--events my-12">
+        <div class="container text--heading font-bold">
+          More from this Contract
+        </div>
+        <div class="cto--container container mt-8">
           <event-card />
           <event-card />
           <event-card />
+        </div>
+        <div class="flex justify-center mt-8">
+          <div class="grid grid-cols-2 gap-4">
+            <button class="btn btn-outline border font-bold">See Store</button>
+            <button class="btn btn-outline border font-bold">
+              Smart Contract
+            </button>
+          </div>
         </div>
       </section>
     </main>
@@ -294,123 +305,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.tickets--body {
-  padding-top: 120px;
-  .page--header.tickets {
-    &:before {
-      background: #0e333f;
-      border-radius: 12px;
-    }
-    .ticket--img {
-      border-radius: 16px;
-      height: 300px;
-      width: 300px;
-      object-fit: cover;
-    }
-  }
-}
-.ticket--details {
-  .container {
-    display: grid;
-    grid-template-columns: 1.3fr 2.3fr;
-    grid-gap: 20px;
-  }
-}
-.more--events {
-  .container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
-  }
-}
-.tabs li.is-active a {
-  border-bottom-color: hsl(var(--p)) !important;
-  color: hsl(var(--p)) !important;
-}
-.info--grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
-  & > div {
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    span {
-      flex-basis: calc(100% - 40px);
-    }
-    .line--rule {
-      height: 10px;
-      border-radius: 10px;
-      width: 100%;
-      margin-top: 10px;
-    }
-    .inf--size {
-      background: rgba(75, 75, 75, 0.67);
-      padding: 5px 8px;
-      margin-top: 10px;
-      border-radius: 10px;
-    }
-    &.royalties {
-      .inf--circ {
-        background: #ed215e;
-      }
-      .line--rule {
-        background: #ed215e;
-      }
-    }
-    &.split {
-      .inf--circ {
-        background: #67d2e1;
-      }
-      .line--rule {
-        background: #67d2e1;
-      }
-    }
-    &.market {
-      .inf--circ {
-        background: #bfc1be;
-      }
-      .line--rule {
-        background: #bfc1be;
-      }
-    }
-    .info--stuf {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      padding: 20px;
-      background: hsla(var(--b1) / 0.3);
-      border-radius: 12px;
-      flex-wrap: wrap;
-      .inf--circ {
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        margin-right: 20px;
-      }
-    }
-  }
-}
-.sale--countdown {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 20px;
-
-  & > div {
-    .uk-countdown-number {
-      background: hsla(var(--p) / 0.5);
-      padding: 1rem;
-      font-size: unset;
-      border-radius: 12px;
-      span {
-        color: #fafafa;
-        font-size: 3rem;
-      }
-    }
-  }
-}
-.control.plus {
-}
-</style>
+<style lang="scss"></style>
