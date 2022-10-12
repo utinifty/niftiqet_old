@@ -1,14 +1,17 @@
 <template>
-  <section class="tickets--body">
+  <section class="">
     <header
-      class="page--header tickets flex flex-col justify-center container items-center"
+      class="page--header events flex flex-col justify-center items-center"
     >
       <div class="container flex flex-col justify-center">
-        <img
-          src="https://placeimg.com/400/225/arch"
-          class="ticket--img"
-          alt="Ticket Image"
-        />
+        <h4>Explore Collections</h4>
+        <div class="text-sm breadcrumbs">
+          <ul>
+            <li><nuxt-link to="/">Home</nuxt-link></li>
+            <li>Resources</li>
+            <li class="text-primary">Collection Items</li>
+          </ul>
+        </div>
       </div>
     </header>
     <main>
