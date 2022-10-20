@@ -22,19 +22,12 @@
         <div class="cto--container container px-4 min-h-screen">
           <div class="profile--grid">
             <div class="profile--data">
-              <div class="avatar--upload">
-                <b-field>
-                  <b-upload v-model="dropFiles" multiple drag-drop>
-                    <section class="section">
-                      <div class="content has-text-centered">
-                        <button class="btn btn-outline border font-bold">
-                          <i class="isax isax-camera mr-2 text-xl"></i>
-                          Upload Avater
-                        </button>
-                      </div>
-                    </section>
-                  </b-upload>
-                </b-field>
+              <div class="avatar--upload flex justify-center">
+                <img
+                  class="avatar--pic rounded-2xl"
+                  src="https://placeimg.com/192/192/people"
+                  alt="Avatar"
+                />
               </div>
               <div class="user--info text-center mt-4">
                 <h3 class="text-xl">Sara Aniton</h3>
@@ -46,12 +39,18 @@
                   </p>
                   <i class="isax isax-copy"></i>
                 </div>
+                <div class="my-4">
+                  <p class="p-4 text-xl">
+                    I create NFT collection rather than bricks-and-click
+                    customizable and scalable.
+                  </p>
+                </div>
               </div>
               <div class="profile--buttons">
-                <button class="btn btn-outline border font-bold">
-                  <i class="isax isax-edit mr-2 text-xl"></i>
-                  Edit Profile
-                </button>
+                <nif-btn>
+                  <i class="isax isax-like-1 mr-2 text-xl"></i>
+                  Follow
+                </nif-btn>
               </div>
               <div class="grid mt-20 grid-flow-col gap-4">
                 <nif-btn href="https://web.facebook.com" target="_blank">
@@ -188,6 +187,11 @@ export default {
 }
 .avatar--upload {
   min-height: 300px;
+  .avatar--pic {
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+  }
   .upload {
     background: #294b59;
     border-radius: 13.353px;

@@ -23,7 +23,7 @@
                   <label class="label">
                     <span class="label-text">Select Store</span>
                   </label>
-                  <select class="select w-full">
+                  <select v-model="mintStore" class="select w-full">
                     <option disabled selected>Select a store</option>
                     <option
                       v-for="(aStore, i) in store.stores"
@@ -43,7 +43,7 @@
               </p>
               <div class="mt-5">
                 <b-field>
-                  <b-upload v-model="dropFiles" multiple drag-drop>
+                  <b-upload v-model="dropFile" drag-drop>
                     <section class="section">
                       <div class="content has-text-centered">
                         <p>PNG,JPG,JPEG,SVG, (Max-50mb)</p>
@@ -54,17 +54,8 @@
                 </b-field>
 
                 <div class="tags">
-                  <span
-                    v-for="(file, index) in dropFiles"
-                    :key="index"
-                    class="tag is-primary"
-                  >
-                    {{ file.name }}
-                    <button
-                      class="delete is-small"
-                      type="button"
-                      @click="deleteDropFile(index)"
-                    ></button>
+                  <span class="tag is-primary">
+                    {{ dropFile.name }}
                   </span>
                 </div>
               </div>
@@ -227,8 +218,8 @@
                         icon="calendar-today"
                         :icon-right="selected ? 'close-circle' : ''"
                         icon-right-clickable
-                        @icon-right-click="clearDate"
                         trap-focus
+                        @icon-right-click="clearDate"
                       >
                       </b-datepicker>
                     </b-field>
@@ -264,6 +255,10 @@
                 >
                   Cancel
                 </button>
+                <button @click.prevent="mintTicket" class="def--btn btn">
+                  Create
+                </button>
+                <!--                <nif-btn @click.prevent="mintTicket"> Create Ticket </nif-btn>-->
               </div>
             </div>
           </div>
@@ -288,7 +283,7 @@ export default {
     return {
       event_category: '',
       price_category: 'VVIP',
-      dropFiles: {},
+      dropFiles: [],
       dropFile: {},
       locale: 'en-US',
       mintStore: '',
@@ -327,6 +322,7 @@ export default {
       console.log('e is', e)
     },
     async mintTicket() {
+      console.log('minting')
       if (!this.mintStore) {
         this.$buefy.toast.open({
           duration: 5000,
@@ -336,18 +332,22 @@ export default {
         })
         return
       }
+      console.log('minting 1')
       if (!this.wallet || !this.wallet?.minter) {
         return
       }
+      console.log('minting 2')
       if (!this.dropFile) {
         return
       }
 
+      console.log('minting 3')
       this.isMinting = true
       const { error: fileError } = await this.wallet.minter.uploadField(
         MetadataField.Media,
         this.dropFile
       )
+      console.log('minting 4')
       if (fileError) {
         return
       }
@@ -367,7 +367,7 @@ export default {
           time: this.eventTime
         } */
       })
-      try {
+      /*  try {
         await this.wallet.mint(
           +this.amount,
           this.mintStore,
@@ -377,7 +377,7 @@ export default {
         )
       } catch (e) {
         return e
-      }
+      } */
       this.isMinting = false
     },
     clearDate() {
