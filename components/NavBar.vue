@@ -52,7 +52,10 @@
                   <a><i class="isax isax-arrow"></i> Royalties</a>
                 </li>
                 <li>
-                  <a><i class="isax isax-element-equal"></i> Collections</a>
+                  <nuxt-link to="/collections">
+                    <i class="isax isax-element-equal"></i>
+                    Collections
+                  </nuxt-link>
                 </li>
                 <li>
                   <a><i class="isax isax-info-circle"></i> Blog</a>
@@ -95,7 +98,10 @@
                 <a><i class="isax isax-arrow"></i> Royalties</a>
               </li>
               <li>
-                <a><i class="isax isax-element-equal"></i> Collections</a>
+                <nuxt-link to="/collections"
+                  ><i class="isax isax-element-equal"></i>
+                  Collections</nuxt-link
+                >
               </li>
               <li>
                 <a><i class="isax isax-info-circle"></i> Blog</a>
@@ -172,8 +178,8 @@
             class="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4"
           >
             <li><nuxt-link to="/profile">Profile</nuxt-link></li>
-            <li><a>Activity</a></li>
-            <li><a>Settings</a></li>
+            <li><nuxt-link to="/activity">Activity</nuxt-link></li>
+            <li><nuxt-link to="/settings">Settings</nuxt-link></li>
             <li><a @click="disconnectWallet">Logout</a></li>
           </ul>
         </div>

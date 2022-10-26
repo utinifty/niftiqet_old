@@ -140,3 +140,35 @@ span {
     }
   }
 }
+
+.ticket--set {
+  .event--card-grid {
+    margin-top: 20px !important;
+  }
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr !important;
+    .ticket--data, .activity--list {
+      order: 0;
+      position: relative;
+    }
+    .grid--collection {
+      order: 1;
+    }
+  }
+}
+
+.nav--spacer {
+  padding-top: 100px;
+}
+
+.profile--views {
+  .collapse {
+    border: solid 1px hsl(var(--bc) / 30%);
+    .collapse-title {
+      border-bottom: solid 1px hsl(var(--bc) / 30%);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

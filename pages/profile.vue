@@ -123,6 +123,9 @@ export default {
 }
 .profile--views {
   .b-tabs {
+    nav {
+      background: transparent !important;
+    }
     [role='tablist'] {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -130,17 +133,22 @@ export default {
       & > li {
         a {
           border-radius: 8px;
+          border-color: var(--bc);
           &:hover {
             background: linear-gradient(to right, #27a0af, #4680bd);
-            color: #fafafa;
             border: none;
+            span {
+              color: #fafafa;
+            }
           }
         }
         &.is-active {
           a {
             background: linear-gradient(to right, #27a0af, #4680bd);
-            color: #fafafa;
             border: none;
+            span {
+              color: #fafafa;
+            }
           }
         }
       }

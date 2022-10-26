@@ -1,6 +1,6 @@
 <template>
   <div class="ticket--data sticky top-0">
-    <div class="card w-96 ">
+    <div class="card">
       <div class="card-body">
         <h2 class="card-title">Ticket Statistics</h2>
         <div class="divider"></div>
@@ -17,6 +17,4 @@
   </div>
 </template>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

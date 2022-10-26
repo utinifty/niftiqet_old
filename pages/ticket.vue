@@ -18,7 +18,7 @@
       <section class="home--body">
         <div class="cto--container container px-4 min-h-screen">
           <div class="ticket--set">
-            <div class="">
+            <div class="grid--collection">
               <div class="flex justify-between items-center">
                 <h3 class="font-bold">Ticket Categories</h3>
                 <select
