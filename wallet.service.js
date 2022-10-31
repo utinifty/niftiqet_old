@@ -1,15 +1,18 @@
 import { Chain, Network, Wallet } from 'mintbase'
 export class WalletService {
-  async walletProvider() {
-    const apiKey = process.env.PUBLIC_MINTBASEJS_API_KEY
+  async walletProvider(data) {
+    const apiKey = data.apiKey
+    const netVal =
+      data.network === 'testnet' ? Network.testnet : Network.mainnet
+    console.log('apikey', apiKey)
+    console.log('Network', netVal)
 
     async function initWallet() {
       const { data: walletData, error } = await new Wallet().init({
-        networkName: process.env.PUBLIC_MINTBASEJS_NETWORK ?? Network.testnet,
+        networkName: netVal,
         chain: Chain.near,
         apiKey,
       })
-
       if (error) {
         return 'no data'
       }
