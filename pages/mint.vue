@@ -61,7 +61,10 @@
               </div>
               <div class="mt-12">
                 <b-field label="Ticket Name">
-                  <b-input placeholder="Ticket Name"></b-input>
+                  <b-input
+                    v-model="ticketName"
+                    placeholder="Ticket Name"
+                  ></b-input>
                 </b-field>
               </div>
               <div class="grid ticket--image">
@@ -104,6 +107,7 @@
               <div class="mt-12">
                 <b-field label="Ticket Decription">
                   <b-input
+                    v-model="description"
                     placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto culpa cumque doloremque doloribus ea esse nihil numquam quam quas qui quibusdam repellendus, temporibus voluptate! Cum excepturi expedita non quo ullam."
                     maxlength="150"
                     type="textarea"
@@ -199,13 +203,19 @@
                 </div>
                 <div>
                   <b-field label="Quantity" class="primary-btns relative">
-                    <b-numberinput :placeholder="2"></b-numberinput>
+                    <b-numberinput
+                      v-model="amount"
+                      :placeholder="2"
+                    ></b-numberinput>
                   </b-field>
                 </div>
                 <no-ssr>
                   <div>
                     <b-field label="Location">
-                      <b-input placeholder="Venue of Event"></b-input>
+                      <b-input
+                        v-model="venue"
+                        placeholder="Venue of Event"
+                      ></b-input>
                     </b-field>
                   </div>
                   <div>
@@ -228,6 +238,7 @@
                 <div>
                   <b-field label="Set Time">
                     <b-timepicker
+                      v-model="eventTime"
                       placeholder="Time of Event"
                       icon="clock"
                       :enable-seconds="enableSeconds"
@@ -255,7 +266,7 @@
                 >
                   Cancel
                 </button>
-                <button @click.prevent="mintTicket" class="def--btn btn">
+                <button class="def--btn btn" @click.prevent="mintTicket">
                   Create
                 </button>
                 <!--                <nif-btn @click.prevent="mintTicket"> Create Ticket </nif-btn>-->
@@ -289,7 +300,7 @@ export default {
       mintStore: '',
       minter: 'aef.testnet',
       ticketName: '',
-      amount: '',
+      amount: 0,
       eventTime: new Date(),
       venue: '',
       description: '',
@@ -343,41 +354,38 @@ export default {
 
       console.log('minting 3')
       this.isMinting = true
-      const { error: fileError } = await this.wallet.minter.uploadField(
+      const uploadData = await this.wallet.minter.uploadField(
         MetadataField.Media,
         this.dropFile
       )
-      console.log('minting 4')
-      if (fileError) {
+      console.log('minting 4', uploadData)
+      if (uploadData.error) {
         return
       }
-      /* const { error: extraError } = await this.wallet.minter.setField(MetadataField.Extra,
-        {
-          venue: this.venue,
-          time: this.eventTime
-        })
-      if (extraError) {
+      const extraData = await this.wallet.minter.setField(MetadataField.Extra, {
+        venue: this.venue,
+        time: this.eventTime,
+      })
+      console.log('minting 5', extraData)
+      if (extraData.error) {
         return
-      } */
-      this.wallet.minter.setMetadata({
+      }
+      const metaStuff = this.wallet.minter.setMetadata({
         title: this.ticketName,
         description: this.description,
-        /* extra: {
-          venue: this.venue,
-          time: this.eventTime
-        } */
       })
-      /*  try {
+      console.log('minting 6', metaStuff)
+      try {
         await this.wallet.mint(
           +this.amount,
           this.mintStore,
           undefined,
           undefined,
-          undefined
+          this.event_category
         )
       } catch (e) {
         return e
-      } */
+      }
       this.isMinting = false
     },
     clearDate() {

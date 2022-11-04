@@ -6795,10 +6795,10 @@ minizlib@^2.1.1:
     minipass "^3.0.0"
     yallist "^4.0.0"
 
-mintbase@^0.8.1:
-  version "0.8.1"
-  resolved "https://registry.yarnpkg.com/mintbase/-/mintbase-0.8.1.tgz#5f964919bee8acf122a8060d0acac52d6bcef639"
-  integrity sha512-2H9EQas20Mt93TjZ5WnS/77e9dK46FHDwvVyrATaOJJFU9zXmef1GhZV40Nbd26KWtOmbEmelWB1gY1hbUy5RA==
+mintbase@^0.8.2:
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/mintbase/-/mintbase-0.8.2.tgz#2b2631d41ba052da82e3ed139a262c4771d12225"
+  integrity sha512-7x2EbDUi9xZd+X+07UpsTIzj+FDJ3M8tnK39Dv/QM6lFYRL3WGi5TccffQahWZA1R1vuHomPjsRTnzMsg8npvg==
   dependencies:
     "@types/retry" "^0.12.1"
     bn.js "^5.2.0"

@@ -1,15 +1,31 @@
-FROM node:17-alpine
+FROM node:16-alpine as builder
 
-RUN mkdir -p /usr/src/nuxt-app
-WORKDIR /usr/src/nuxt-app
+WORKDIR /app
+
 COPY . .
 
-RUN npm ci && npm cache clean --force
-RUN npm run build
+RUN yarn install \
+  --prefer-offline \
+  --frozen-lockfile \
+  --non-interactive \
+  --production=false
 
-ENV NUXT_HOST=0.0.0.0
-ENV NUXT_PORT=3000
+RUN yarn generate
 
-EXPOSE 3000 
+RUN rm -rf node_modules && \
+  NODE_ENV=production yarn install \
+  --prefer-offline \
+  --pure-lockfile \
+  --non-interactive \
+  --production=true
 
-ENTRYPOINT ["node", ".output/server/index.mjs"]
+FROM node:16-alpine
+
+WORKDIR /app
+
+COPY --from=builder /app  .
+
+ENV HOST 0.0.0.0
+EXPOSE 3000
+
+CMD [ "yarn", "start" ]
