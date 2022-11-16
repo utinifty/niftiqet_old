@@ -13,3 +13,12 @@ Niftiqet is a ticketing platform that aims to make creating events and tickets e
 - Docker
 - Akash - hosting (Mainnet)
 - Netlify - hosting (Testnet)
+
+Milestone 2 attained:
+- Deployed on mainnet (https://niftiqet.com)
+- Incorporated as CommandLine Technologies
+- App branding done. Document to be shared.
+- Business development and marketing plans being drawn.
+- App not yet audited.
+
+
